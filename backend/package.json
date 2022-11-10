@@ -115,15 +115,3 @@
     "verbose": false
   }
 }
-
-{
-  "ngPackage": {
-    "assets": [
-      "CHANGELOG.md",
-      "./typedefs/**/*.d.ts"
-    ],
-    "lib": {
-      ...
-    }
-  }
-}
