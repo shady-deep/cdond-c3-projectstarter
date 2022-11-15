@@ -12,10 +12,9 @@ jobs:
           name: Build front-end
           command: |
             cd frontend
-            npm install --no-audit
-            chmod 0755 /usr/local/lib/node_modules
+            npm install 
+            npm audit --force
             npm fund
-            npm install -g typescript
             npm run build
             exit 1
       - save_cache:
@@ -33,9 +32,8 @@ jobs:
           command: |
              cd backend
              npm install --no-audit
-             chmod 0755 /usr/local/lib/node_modules
+             npm audit --force
              npm fund
-             npm install -g typescript
              npm run build
              exit 1
       - save_cache:
