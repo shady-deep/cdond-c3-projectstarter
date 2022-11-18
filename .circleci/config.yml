@@ -21,7 +21,7 @@ jobs:
           name: Build front-end
           command: |
             cd frontend
-            npm install 
+            npm install --no-audit
             npm install winston 
             npm run build
             exit 1
@@ -37,7 +37,7 @@ jobs:
           name: Back-end build
           command: |
              cd backend
-             npm install 
+             npm install --no-audit
              npm install winston
              npm run build
              exit 1
