@@ -1,20 +1,27 @@
 version: 2.1
 
 jobs:
+  install_nodejs:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run:
+          name: Install Node.js 13.8.0
+          command: |
+            curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+            sudo apt install -y nodejs
+            sudo npm install --global n
+            sudo n 13.8.0
   build-frontend:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cache:
-          keys: [frontend-build]
       - run:
           name: Build front-end
           command: |
             cd frontend
-            npm install --no audit --force
-            npm audit fix --force
-            npm fund
+            npm install 
             npm run build
             exit 1
       - save_cache:
@@ -25,15 +32,11 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - restore_cache:
-          keys: [backend-build]
       - run:
           name: Back-end build
           command: |
              cd backend
-             npm install --no-audit --force
-             npm audit fix --force
-             npm fund
+             npm install 
              npm run build
              exit 1
       - save_cache:
