@@ -22,6 +22,7 @@ jobs:
           command: |
             cd frontend
             npm install 
+            npm install winston 
             npm run build
             exit 1
       - save_cache:
@@ -37,6 +38,7 @@ jobs:
           command: |
              cd backend
              npm install 
+             npm install winston
              npm run build
              exit 1
       - save_cache:
